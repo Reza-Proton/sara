@@ -3,37 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>مدیریت ساختمان</title>
+<title>سرا</title>
+<meta name="theme-color" content="#3b5bdb">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#eef1f4;--surface:#fff;--ink:#1f2a37;--muted:#667085;--line:#d9dee5;--primary:#1f6f6b;--debt:#b42318;--credit:#0f7b4b}
+:root{--bg:#f7f9ff;--surface:#fff;--ink:#1b2340;--muted:#6b7694;--line:#e7ebf5;--primary:#3b5bdb;--accent:#12b8a6;--debt:#e03131;--credit:#0ca678}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:'Vazirmatn',Tahoma,sans-serif;line-height:1.7}
 .wrap{max-width:960px;margin:0 auto;padding:16px}
-h1{font-size:1.4rem;font-weight:800;margin:0 0 12px}
+h1{font-size:1.5rem;font-weight:800;margin:0 0 12px;color:var(--primary)}
+.banner{background:#fff4e5;border:1px solid #f1c27d;border-radius:8px;padding:10px 12px;margin-bottom:12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
 .bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
 .tabs{display:flex;gap:4px;overflow-x:auto;border-bottom:2px solid var(--line);margin-bottom:16px}
 .tab{background:none;border:0;padding:10px 14px;font:inherit;color:var(--muted);cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-2px}
-.tab.on{color:var(--primary);font-weight:600;border-color:var(--primary)}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px;margin-bottom:14px}
+.tab.on{color:var(--primary);font-weight:600;border-color:var(--accent)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 2px 10px rgba(59,91,219,.06)}
 .scroll{overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-size:.92rem}
 th,td{padding:8px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
 th{color:var(--muted);font-weight:600}
 tfoot td{font-weight:600;border-bottom:0}
 input,select,button{font:inherit}
-input,select{padding:7px 9px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);min-width:0}
+input,select{padding:7px 9px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);min-width:0}
 td input{width:100%;min-width:90px}
-.btn{padding:7px 14px;border:1px solid var(--primary);background:var(--primary);color:#fff;border-radius:6px;cursor:pointer}
+.btn{padding:7px 14px;border:1px solid var(--primary);background:var(--primary);color:#fff;border-radius:10px;cursor:pointer}
 .btn.ghost{background:#fff;color:var(--primary)}
 .btn.del{background:#fff;color:var(--debt);border-color:var(--line);padding:4px 10px}
-:focus-visible{outline:3px solid #7fb8b4;outline-offset:1px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:1px}
 .form{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
 .form input,.form select{flex:1 1 140px}
 .neg{color:var(--debt)}.pos{color:var(--credit)}
 .muted{color:var(--muted);font-size:.9rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:12px}
+label.f{display:flex;flex-direction:column;gap:2px;font-size:.85rem;color:var(--muted)}
+.chk{flex-direction:row!important;align-items:center;gap:8px!important;align-self:end;padding-bottom:6px}
+.chk input{width:auto}
+.off{color:var(--muted)}
+.hb{display:flex;align-items:center;gap:8px;margin:5px 0;font-size:.9rem}
+.hb .bar2{height:14px;background:var(--accent);border-radius:3px;min-width:2px}
+body{padding-bottom:84px}
+.nav{position:fixed;bottom:0;left:0;right:0;z-index:20;display:flex;overflow-x:auto;scrollbar-width:none;background:#fff;border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);box-shadow:0 -2px 12px rgba(59,91,219,.08)}
+.nav::-webkit-scrollbar{display:none}
+.nav button{flex:0 0 22%;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 2px;border:0;background:none;font:inherit;font-size:.74rem;color:var(--muted);cursor:pointer;white-space:nowrap}
+.nav button.on{color:var(--primary);font-weight:600}
+.nav button.on svg{stroke:var(--accent)}
+@media(min-width:700px){.nav button{flex:1 0 auto;padding:8px 14px}}
+@media print{.nav,.tabs,.banner,.noprint,.bar,.btn{display:none!important}body{background:#fff}.card{border:0;padding:0}}
 .sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
-.sum div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.sum div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;box-shadow:0 2px 10px rgba(59,91,219,.05)}
 .sum b{display:block;font-size:1.15rem}
 </style>
 </head>
@@ -49,41 +69,440 @@ const KEY = 'building-manager-v1';
 const MONTHS = ['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور','مهر','آبان','آذر','دی','بهمن','اسفند'];
 const uid = () => Math.random().toString(36).slice(2, 9);
 const fa = n => Math.round(n).toLocaleString('fa-IR');
+const faDigits = n => String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+const faNum = n => faDigits(String(n)).replace('.', '٫');
+const toLatin = t => String(t).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/٫/g, '.');
+// Text input that shows Persian digits and groups thousands while typing; value is a plain latin-digit string
+function NumIn({ value, onChange, decimal, group = true, ...rest }) {
+  const [ip, fp] = String(value ?? '').split('.');
+  const shown = faDigits(group ? ip.replace(/\B(?=(\d{3})+(?!\d))/g, '٬') : ip) + (fp !== undefined ? '٫' + faDigits(fp) : '');
+  const handle = e => {
+    let t = toLatin(e.target.value).replace(/[٬,\s]/g, '').replace(decimal ? /[^\d.]/g : /[^\d]/g, '');
+    if (decimal) { const i = t.indexOf('.'); if (i >= 0) t = t.slice(0, i + 1) + t.slice(i + 1).replace(/\./g, ''); }
+    onChange(t);
+  };
+  return <input {...rest} inputMode={decimal ? 'decimal' : 'numeric'} value={shown} onChange={handle} />;
+}
+const ICONS = {
+  trash: <path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 11v6M14 11v6" />,
+  edit: <path d="M4 20h4L19 9l-4-4L4 16z" />,
+  dash: <><rect x="3" y="3" width="8" height="8" rx="1" /><rect x="13" y="3" width="8" height="5" rx="1" /><rect x="13" y="10" width="8" height="11" rx="1" /><rect x="3" y="13" width="8" height="8" rx="1" /></>,
+  building: <><rect x="5" y="3" width="14" height="18" rx="1" /><path d="M9 7h2M13 7h2M9 11h2M13 11h2M10 21v-4h4v4" /></>,
+  receipt: <><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z" /><path d="M9 8h6M9 12h6" /></>,
+  wallet: <><path d="M3 7h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><path d="M3 7l12-3v3M16 14h2" /></>,
+  coins: <><ellipse cx="12" cy="6" rx="8" ry="3" /><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6" /></>,
+  chart: <path d="M4 20V4M4 20h16M8 16v-5M13 16V8M18 16v-3" />,
+  scale: <path d="M12 3v18M7 21h10M5 7h14M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0z" />,
+  gear: <><circle cx="12" cy="12" r="3" /><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1" /></>
+};
+function Ico({ n, size = 20 }) {
+  return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{ICONS[n]}</svg>;
+}
+const DEFAULT_CATS = {
+  expense: ['نظافت', 'آسانسور', 'قبض آب', 'قبض برق', 'قبض گاز', 'تعمیرات و نگهداری'],
+  payment: ['شارژ ماهانه', 'تسویه بدهی', 'سایر'],
+  fund: ['پس‌انداز', 'مطالبه‌ی جدا']
+};
 const pad = n => String(n).padStart(2, '0');
 const mk = (y, m) => `${y}-${pad(m)}`;
 
 function currentJalali() {
-  const parts = new Intl.DateTimeFormat('fa-IR-u-ca-persian-nu-latn', { year: 'numeric', month: 'numeric' }).formatToParts(new Date());
+  const parts = new Intl.DateTimeFormat('fa-IR-u-ca-persian-nu-latn', { year: 'numeric', month: 'numeric', day: 'numeric' }).formatToParts(new Date());
   const get = t => Number(parts.find(p => p.type === t).value);
-  return { y: get('year'), m: get('month') };
+  return { y: get('year'), m: get('month'), d: get('day') };
 }
 
-function load() {
-  try { return JSON.parse(localStorage.getItem(KEY)) || { units: [], expenses: [], payments: [] }; }
-  catch (e) { return { units: [], expenses: [], payments: [] }; }
-}
+const EMPTY_UNIT = { number: '', type: 'owner', resident: '', owner: '', phone: '', floor: '', area: '', persons: '', coef: '1', active: true, note: '' };
 
-// Compute per-unit report for a given period
-function report(data, period) {
-  const sumCoef = data.units.reduce((s, u) => s + Number(u.coef || 0), 0);
-  const share = (u, p) => {
-    const total = data.expenses.filter(e => e.period === p).reduce((s, e) => s + e.amount, 0);
-    return sumCoef ? total * Number(u.coef || 0) / sumCoef : 0;
+const emptyData = () => ({ units: [], expenses: [], payments: [], fundDeposits: [], settlements: [], settings: { advances: [], fundInitial: 0, categories: { expense: [], payment: [], fund: [] } } });
+function normalize(d) {
+  const e = emptyData(), st = d.settings || {};
+  const cats = { ...e.settings.categories, ...(st.categories || {}) };
+  let seeded = st.seeded;
+  if (!seeded) {
+    Object.entries(DEFAULT_CATS).forEach(([k, names]) => { if (!cats[k].length) cats[k] = names.map(n => ({ id: uid(), name: n, active: true })); });
+    seeded = true;
+  }
+  return {
+    ...e, ...d,
+    settings: { ...e.settings, ...st, categories: cats, seeded },
+    // Migrate units from the first version (name/owner -> number/resident)
+    units: (d.units || []).map(u => ({ ...EMPTY_UNIT, ...u, number: u.number ?? u.name ?? '', resident: u.resident ?? u.owner ?? '', owner: u.number === undefined ? '' : (u.owner ?? '') }))
   };
-  const periods = [...new Set(data.expenses.map(e => e.period))].filter(p => p <= period);
-  return data.units.map(u => {
-    const charge = share(u, period);
-    const paid = data.payments.filter(p => p.unitId === u.id && p.period === period).reduce((s, p) => s + p.amount, 0);
-    const allCharges = periods.reduce((s, p) => s + share(u, p), 0);
-    const allPaid = data.payments.filter(p => p.unitId === u.id && p.period <= period).reduce((s, p) => s + p.amount, 0);
-    return { id: u.id, name: u.name, owner: u.owner, coef: Number(u.coef || 0), charge, paid, balance: allPaid - allCharges };
+}
+function load() {
+  try { return normalize(JSON.parse(localStorage.getItem(KEY)) || {}); } catch (e) { return emptyData(); }
+}
+
+// Advance amount (Rial, per coefficient 1) effective for a period: latest entry whose 'from' <= period
+function advanceFor(data, period) {
+  const list = [...data.settings.advances].sort((a, b) => a.from.localeCompare(b.from));
+  let amount = 0;
+  for (const a of list) if (a.from <= period) amount = a.amount;
+  return amount;
+}
+
+function periodsUpTo(from, to) {
+  const out = [];
+  let [y, m] = from.split('-').map(Number);
+  const [ty, tm] = to.split('-').map(Number);
+  while ((y < ty || (y === ty && m <= tm)) && out.length < 1200) {
+    out.push(mk(y, m));
+    if (++m > 12) { m = 1; y++; }
+  }
+  return out;
+}
+
+const KINDS = { coef: 'بر اساس ضریب', equal: 'مساوی', special: 'مطالبه‌ی جدا' };
+const quarterMonths = (y, q) => [mk(y, 3 * q - 2), mk(y, 3 * q - 1), mk(y, 3 * q)];
+const isSettled = (data, period) => data.settlements.some(st => quarterMonths(st.year, st.q).includes(period));
+
+const dateStr = (period, day) => `${faDigits(period.slice(0, 4))}/${faDigits(period.slice(5))}/${faDigits(pad(day || 1))}`;
+const catName = (data, kind, id) => (data.settings.categories[kind].find(c => c.id === id) || {}).name || 'بدون دسته';
+const qIndex = st => st.year * 4 + st.q;
+
+// Quarterly settlement. diff = carry from previous quarter + paid - actual share (debts get paid later; credits carry over)
+function computeSettlement(data, y, q) {
+  const months = quarterMonths(y, q);
+  const exp = data.expenses.filter(e => months.includes(e.period));
+  const sumKind = k => exp.filter(e => (e.kind || 'coef') === k).reduce((s, e) => s + e.amount, 0);
+  const coefTotal = sumKind('coef'), equalTotal = sumKind('equal'), specialTotal = sumKind('special');
+  const active = data.units.filter(u => u.active);
+  const sumCoef = active.reduce((s, u) => s + Number(u.coef || 0), 0);
+  const prev = data.settlements.find(st => st.year === (q === 1 ? y - 1 : y) && st.q === (q === 1 ? 4 : q - 1));
+  const rows = data.units.map(u => {
+    const share = u.active ? (sumCoef ? coefTotal * Number(u.coef || 0) / sumCoef : 0) + (equalTotal / active.length) : 0;
+    const paid = data.payments.filter(p => p.unitId === u.id && months.includes(p.period)).reduce((s, p) => s + p.amount, 0);
+    const carry = prev ? ((prev.rows.find(r => r.unitId === u.id) || {}).diff || 0) : 0;
+    return { unitId: u.id, number: u.number, resident: u.resident, active: u.active, share, paid, carry, diff: carry + paid - share };
   });
+  return { coefTotal, equalTotal, specialTotal, rows, sumCoef, activeCount: active.length };
+}
+
+// Per-unit report for a period. Settled quarters show the settlement difference; later months start from it as carry.
+function report(data, period) {
+  const starts = data.settings.advances.map(a => a.from).sort();
+  const periods = (starts.length ? periodsUpTo(starts[0], period) : []).filter(p => !isSettled(data, p));
+  const inSt = data.settlements.find(st => quarterMonths(st.year, st.q).includes(period));
+  const prev = data.settlements.filter(st => quarterMonths(st.year, st.q)[2] < period).sort((a, b) => qIndex(a) - qIndex(b)).pop();
+  const chargeFor = (u, p) => u.active ? advanceFor(data, p) * Number(u.coef || 0) : 0;
+  const diffOf = (st, u) => (st.rows.find(r => r.unitId === u.id) || {}).diff || 0;
+  return data.units.map(u => {
+    const charge = chargeFor(u, period);
+    const paid = data.payments.filter(p => p.unitId === u.id && p.period === period).reduce((s, p) => s + p.amount, 0);
+    const allCharges = periods.reduce((s, p) => s + chargeFor(u, p), 0);
+    const allPaid = data.payments.filter(p => p.unitId === u.id && p.period <= period && !isSettled(data, p.period)).reduce((s, p) => s + p.amount, 0);
+    const balance = inSt ? diffOf(inSt, u) : (prev ? diffOf(prev, u) : 0) + allPaid - allCharges;
+    return { id: u.id, number: u.number, resident: u.resident, active: u.active, coef: Number(u.coef || 0), charge, paid, balance };
+  });
+}
+
+// Fund ledger: every money movement with exact date; running balance starts from the initial fund balance
+function ledger(data, period) {
+  const all = flowItems(data);
+  const net = r => r.inc - r.out - r.fee;
+  const total = all.reduce((s, r) => s + net(r), 0) + (data.settings.fundInitial || 0);
+  let bal = (data.settings.fundInitial || 0) + all.filter(r => r.period < period).reduce((s, r) => s + net(r), 0);
+  const opening = bal;
+  const rows = all.filter(r => r.period === period).sort((a, b) => a.day - b.day).map(r => ({ ...r, balance: (bal += net(r)) }));
+  return { rows, opening, total };
+}
+
+function CatSelect({ data, kind, value, onChange, placeholder }) {
+  return <select value={value || ''} onChange={e => onChange(e.target.value)} aria-label="دسته">
+    <option value="">{placeholder || 'بدون دسته'}</option>
+    {data.settings.categories[kind].filter(c => c.active || c.id === value).map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+  </select>;
+}
+
+function CategoryEditor({ data, set, kind, title }) {
+  const [name, setName] = useState('');
+  const list = data.settings.categories[kind];
+  const coll = { expense: 'expenses', payment: 'payments', fund: 'fundDeposits' }[kind];
+  const used = id => data[coll].some(x => x.category === id);
+  const upd = fn => set('settings', st => ({ ...st, categories: { ...st.categories, [kind]: fn(st.categories[kind]) } }));
+  const add = () => {
+    const n = name.trim();
+    if (!n) return;
+    if (list.some(c => c.name === n)) return alert('این دسته قبلاً ثبت شده.');
+    upd(l => [...l, { id: uid(), name: n, active: true }]);
+    setName('');
+  };
+  return <div className="card">
+    <b>{title}</b>
+    <div className="form" style={{ marginTop: 10 }}>
+      <input placeholder="نام دسته" value={name} onChange={e => setName(e.target.value)} />
+      <button className="btn" onClick={add}>افزودن</button>
+    </div>
+    <div className="scroll"><table><tbody>{list.map(c => <tr key={c.id}>
+      <td><input value={c.name} onChange={e => upd(l => l.map(x => x.id === c.id ? { ...x, name: e.target.value } : x))} /></td>
+      <td><button className="btn ghost" style={{ padding: '4px 10px' }} onClick={() => upd(l => l.map(x => x.id === c.id ? { ...x, active: !x.active } : x))}>{c.active ? 'غیرفعال کن' : 'فعال کن'}</button></td>
+      <td>{used(c.id) ? <span className="muted">در حال استفاده</span> : <button className="btn del" aria-label="حذف" title="حذف" onClick={() => upd(l => l.filter(x => x.id !== c.id))}><Ico n="trash" /></button>}</td>
+    </tr>)}</tbody></table></div>
+  </div>;
 }
 
 function Balance({ v }) {
   const r = Math.round(v);
   if (r === 0) return <span>۰</span>;
-  return <span className={r < 0 ? 'neg' : 'pos'}>{fa(Math.abs(r))} {r < 0 ? 'بدهکار' : 'بستانکار'}</span>;
+  return <span className={r < 0 ? 'neg' : 'pos'}>{fa(Math.abs(r))} ریال {r < 0 ? 'بدهکار' : 'بستانکار'}</span>;
+}
+
+const SRC = { expense: 'هزینه‌ها', payment: 'پرداخت واحدها', deposit: 'واریزی صندوق' };
+const SRC_CAT = { expense: 'expense', payment: 'payment', deposit: 'fund' };
+const keyOf = (y, m, d) => `${mk(y, m)}-${pad(d)}`;
+const itemKey = x => `${x.period}-${pad(x.day || 1)}`;
+const val = x => x.src === 'expense' ? x.out : x.inc;
+const net = x => x.inc - x.out - x.fee;
+
+// All money movements as one list (used by fund ledger and reports)
+function flowItems(data) {
+  const unit = id => (data.units.find(u => u.id === id) || {}).number || '—';
+  return [
+    ...data.payments.map(x => ({ id: x.id, src: 'payment', unitId: x.unitId, period: x.period, day: x.day || 1, label: 'پرداخت واحد ' + unit(x.unitId), category: x.category || '', cat: catName(data, 'payment', x.category), inc: x.amount, out: 0, fee: 0 })),
+    ...data.fundDeposits.map(x => ({ id: x.id, src: 'deposit', period: x.period, day: x.day || 1, label: x.note || 'واریزی صندوق', category: x.category || '', cat: catName(data, 'fund', x.category), inc: x.amount, out: 0, fee: 0 })),
+    ...data.expenses.map(x => ({ id: x.id, src: 'expense', period: x.period, day: x.day || 1, label: x.category ? catName(data, 'expense', x.category) + (x.title ? ' - ' + x.title : '') : x.title, category: x.category || '', cat: catName(data, 'expense', x.category), inc: 0, out: x.amount, fee: x.fee || 0 }))
+  ];
+}
+
+const PALETTE = ['#3b5bdb', '#12b8a6', '#f59f00', '#e64980', '#7048e8', '#37b24d', '#1c7ed6', '#f76707'];
+const short = v => Math.abs(v) >= 1e6 ? faDigits(+(v / 1e6).toFixed(1)).replace('.', '٫') + ' م' : fa(v);
+
+function LineChart({ labels, series }) {
+  const W = 600, H = 230, L = 46, R = 12, T = 14, B = 34;
+  const all = series.flatMap(sr => sr.values);
+  const max = Math.max(1, ...all), min = Math.min(0, ...all);
+  const x = i => labels.length > 1 ? L + i * (W - L - R) / (labels.length - 1) : (W + L - R) / 2;
+  const y = v => T + (max - v) / (max - min) * (H - T - B);
+  const ticks = [0, 1, 2, 3, 4].map(k => min + (max - min) * k / 4);
+  return <div className="scroll"><svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', minWidth: Math.max(320, labels.length * 44) }} role="img" aria-label="نمودار خطی">
+    {ticks.map((t, k) => <g key={k}><line x1={L} x2={W - R} y1={y(t)} y2={y(t)} stroke="#e7ebf5" /><text x={L - 6} y={y(t) + 4} textAnchor="end" fontSize="10" fill="#6b7694">{short(t)}</text></g>)}
+    {series.map(sr => <g key={sr.name}>
+      <polyline fill="none" stroke={sr.color} strokeWidth="2.5" strokeLinejoin="round" points={sr.values.map((v, i) => `${x(i)},${y(v)}`).join(' ')} />
+      {sr.values.map((v, i) => <circle key={i} cx={x(i)} cy={y(v)} r="3.5" fill="#fff" stroke={sr.color} strokeWidth="2" />)}
+    </g>)}
+    {labels.map((l, i) => <text key={i} x={x(i)} y={H - 12} textAnchor="middle" fontSize="10" fill="#6b7694">{l}</text>)}
+  </svg></div>;
+}
+
+function Donut({ list }) {
+  const total = list.reduce((t, g) => t + g.sum, 0) || 1, R = 54, C = 2 * Math.PI * R;
+  let off = 0;
+  return <svg viewBox="0 0 140 140" width="150" height="150" role="img" aria-label="سهم دسته‌ها">
+    {list.map((g, k) => {
+      const f = g.sum / total;
+      const el = <circle key={k} cx="70" cy="70" r={R} fill="none" stroke={PALETTE[k % PALETTE.length]} strokeWidth="22" strokeDasharray={`${f * C} ${C}`} strokeDashoffset={-off * C} transform="rotate(-90 70 70)" />;
+      off += f;
+      return el;
+    })}
+  </svg>;
+}
+
+function Reports({ data, cur }) {
+  const [view, setView] = useState('cat');
+  const [r, setR] = useState({ fy: cur.y, fm: 1, fd: 1, ty: cur.y, tm: cur.m, td: 31 });
+  const [src, setSrc] = useState('expense');
+  const [cat, setCat] = useState('all');
+  const [unitId, setUnitId] = useState('');
+  const fromK = keyOf(r.fy, r.fm, r.fd), toK = keyOf(r.ty, r.tm, r.td);
+  const fromP = mk(r.fy, r.fm), toP = mk(r.ty, r.tm);
+  const bad = fromK > toK;
+  const items = flowItems(data);
+  const sel = bad ? [] : items.filter(x => itemKey(x) >= fromK && itemKey(x) <= toK);
+  const periods = bad ? [] : periodsUpTo(fromP, toP);
+  const preset = k => {
+    const q = Math.ceil(cur.m / 3);
+    if (k === 'month') setR({ fy: cur.y, fm: cur.m, fd: 1, ty: cur.y, tm: cur.m, td: 31 });
+    if (k === 'quarter') setR({ fy: cur.y, fm: 3 * q - 2, fd: 1, ty: cur.y, tm: 3 * q, td: 31 });
+    if (k === 'year') setR({ fy: cur.y, fm: 1, fd: 1, ty: cur.y, tm: 12, td: 31 });
+  };
+  const dateIn = p => <>
+    <NumIn group={false} style={{ flex: '0 1 90px' }} value={r[p + 'y']} onChange={v => setR({ ...r, [p + 'y']: Number(v) || 0 })} aria-label="سال" />
+    <select style={{ flex: '0 1 120px' }} value={r[p + 'm']} onChange={e => setR({ ...r, [p + 'm']: Number(e.target.value) })} aria-label="ماه">
+      {MONTHS.map((n, i) => <option key={n} value={i + 1}>{n}</option>)}
+    </select>
+    <NumIn group={false} style={{ flex: '0 1 70px' }} value={r[p + 'd']} onChange={v => setR({ ...r, [p + 'd']: Number(v) || 0 })} aria-label="روز" />
+  </>;
+  const monthLabel = p => MONTHS[Number(p.slice(5)) - 1] + ' ' + faDigits(p.slice(0, 4));
+  const catKind = SRC_CAT[['balance', 'flow'].includes(src) ? 'expense' : src];
+
+  const build = () => {
+    if (view === 'cat' || view === 'trend') {
+      const s2 = src;
+      if (view === 'cat') {
+        const group = {};
+        sel.filter(x => x.src === s2).forEach(x => {
+          const g = group[x.category] || (group[x.category] = { name: x.cat, sum: 0, fee: 0, n: 0 });
+          g.sum += val(x); g.fee += x.fee; g.n++;
+        });
+        const list = Object.values(group).sort((a, b) => b.sum - a.sum);
+        const total = list.reduce((t, g) => t + g.sum, 0);
+        const top = sel.filter(x => x.src === 'expense').sort((a, b) => b.out - a.out).slice(0, 10);
+        return {
+          rows: list.map(g => ({ 'دسته': g.name, 'جمع (ریال)': Math.round(g.sum), 'تعداد': g.n, 'سهم (درصد)': total ? Math.round(g.sum / total * 100) : 0 })),
+          jsx: <>
+            <b>جمع {SRC[s2]} به تفکیک دسته</b>
+            {list.length === 0 ? <p className="muted">در این بازه چیزی ثبت نشده.</p> : <>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, alignItems: 'center', margin: '10px 0' }}>
+                <Donut list={list} />
+                <div style={{ flex: 1, minWidth: 230 }}>{list.map((g, k) => <div key={k} className="hb">
+                  <span style={{ color: PALETTE[k % PALETTE.length] }}>●</span>
+                  <span style={{ width: 96, flex: 'none' }}>{g.name}</span>
+                  <div style={{ flex: 1 }}><div className="bar2" style={{ width: (g.sum / list[0].sum * 100) + '%', background: PALETTE[k % PALETTE.length] }} /></div>
+                  <span style={{ width: 70, flex: 'none', textAlign: 'left' }}>{short(g.sum)}</span>
+                </div>)}</div>
+              </div>
+              <div className="scroll"><table>
+                <thead><tr><th>دسته</th><th>جمع (ریال)</th><th>تعداد</th><th>سهم</th></tr></thead>
+                <tbody>{list.map((g, k) => <tr key={k}><td>{g.name}</td><td>{fa(g.sum)}</td><td>{faDigits(g.n)}</td><td>{faDigits(total ? Math.round(g.sum / total * 100) : 0)}٪</td></tr>)}</tbody>
+                <tfoot><tr><td>جمع</td><td>{fa(total)}</td><td></td><td></td></tr></tfoot>
+              </table></div>
+            </>}
+            {s2 === 'expense' && top.length > 0 && <>
+              <p style={{ marginTop: 16 }}><b>بزرگ‌ترین هزینه‌ها</b></p>
+              <div className="scroll"><table>
+                <thead><tr><th>تاریخ</th><th>عنوان</th><th>دسته</th><th>مبلغ (ریال)</th></tr></thead>
+                <tbody>{top.map(x => <tr key={x.id}><td>{dateStr(x.period, x.day)}</td><td>{x.label}</td><td>{x.cat}</td><td>{fa(x.out)}</td></tr>)}</tbody>
+              </table></div>
+            </>}
+          </>
+        };
+      }
+      const bal = p => (data.settings.fundInitial || 0) + items.filter(x => x.period <= p).reduce((t, x) => t + net(x), 0);
+      const series = s2 === 'flow'
+        ? [{ name: 'درآمد', color: '#12b8a6', values: periods.map(p => sel.filter(x => x.period === p).reduce((t, x) => t + x.inc, 0)) },
+           { name: 'هزینه و کارمزد', color: '#e03131', values: periods.map(p => sel.filter(x => x.period === p).reduce((t, x) => t + x.out + x.fee, 0)) }]
+        : [{ name: s2 === 'balance' ? 'موجودی' : 'مبلغ', color: '#3b5bdb', values: periods.map(p => s2 === 'balance' ? bal(p) : sel.filter(x => x.src === s2 && x.period === p && (cat === 'all' || x.category === cat)).reduce((t, x) => t + val(x), 0)) }];
+      const change = (vals, i) => {
+        if (i === 0 || !vals[i - 1]) return '—';
+        const pc = (vals[i] - vals[i - 1]) / Math.abs(vals[i - 1]) * 100;
+        return (pc > 0 ? '▲ ' : pc < 0 ? '▼ ' : '') + faDigits(Math.abs(Math.round(pc))) + '٪';
+      };
+      const title = s2 === 'balance' ? 'موجودی پایان ماه صندوق' : s2 === 'flow' ? 'درآمد و هزینه‌ی صندوق' : SRC[s2] + (cat === 'all' ? '' : ' - ' + catName(data, SRC_CAT[s2], cat));
+      const single = series.length === 1;
+      const sum = series[0].values.reduce((t, v) => t + v, 0);
+      return {
+        rows: periods.map((p, i) => Object.fromEntries([['ماه', monthLabel(p)], ...series.map(sr => [sr.name + ' (ریال)', Math.round(sr.values[i])])])),
+        jsx: <>
+          <b>روند ماهانه: {title}</b>
+          {periods.length === 0 ? <p className="muted">بازه معتبر نیست.</p> : <>
+            <LineChart labels={periods.map(p => MONTHS[Number(p.slice(5)) - 1])} series={series} />
+            {!single && <p className="muted">{series.map(sr => <span key={sr.name} style={{ marginInlineEnd: 14 }}><span style={{ color: sr.color }}>●</span> {sr.name}</span>)}</p>}
+            <div className="scroll"><table>
+              <thead><tr><th>ماه</th>{series.map(sr => <th key={sr.name}>{sr.name} (ریال)</th>)}{single && <th>تغییر نسبت به ماه قبل</th>}</tr></thead>
+              <tbody>{periods.map((p, i) => <tr key={p}><td>{monthLabel(p)}</td>{series.map(sr => <td key={sr.name}>{fa(sr.values[i])}</td>)}{single && <td>{change(series[0].values, i)}</td>}</tr>)}</tbody>
+            </table></div>
+            {single && s2 !== 'balance' && <p className="muted">جمع بازه: {fa(sum)} ریال، میانگین ماهانه: {fa(sum / periods.length)} ریال</p>}
+          </>}
+        </>
+      };
+    }
+    if (view === 'unit') {
+      const u = data.units.find(x => x.id === unitId);
+      if (!u) return { rows: [], jsx: <p className="muted">یک واحد انتخاب کن.</p> };
+      const mrows = periods.map(p => ({
+        p, charge: u.active ? advanceFor(data, p) * Number(u.coef || 0) : 0,
+        paid: sel.filter(x => x.src === 'payment' && x.period === p && x.unitId === u.id).reduce((t, x) => t + x.inc, 0)
+      }));
+      const sts = data.settlements.filter(st => quarterMonths(st.year, st.q)[2] >= fromP && quarterMonths(st.year, st.q)[0] <= toP);
+      const bal = (report(data, toP).find(x => x.id === u.id) || {}).balance || 0;
+      return {
+        rows: mrows.map(x => ({ 'ماه': monthLabel(x.p), 'شارژ علی‌الحساب (ریال)': Math.round(x.charge), 'پرداختی (ریال)': Math.round(x.paid) })),
+        jsx: <>
+          <b>کارت‌ریز واحد {u.number} {u.resident && '- ' + u.resident}</b>
+          <div className="scroll"><table>
+            <thead><tr><th>ماه</th><th>شارژ علی‌الحساب</th><th>پرداختی</th></tr></thead>
+            <tbody>{mrows.map(x => <tr key={x.p}><td>{monthLabel(x.p)}</td><td>{fa(x.charge)}</td><td>{fa(x.paid)}</td></tr>)}</tbody>
+            <tfoot><tr><td>جمع (ریال)</td><td>{fa(mrows.reduce((t, x) => t + x.charge, 0))}</td><td>{fa(mrows.reduce((t, x) => t + x.paid, 0))}</td></tr></tfoot>
+          </table></div>
+          {sts.length > 0 && <div className="scroll"><p><b>تسویه‌های فصلی</b></p><table>
+            <thead><tr><th>فصل</th><th>سهم</th><th>پرداختی</th><th>اختلاف</th></tr></thead>
+            <tbody>{sts.map(st => { const row = st.rows.find(x => x.unitId === u.id) || { share: 0, paid: 0, diff: 0 };
+              return <tr key={st.id}><td>{faDigits(st.q)} - {faDigits(st.year)}</td><td>{fa(row.share)}</td><td>{fa(row.paid)}</td><td><Balance v={row.diff} /></td></tr>; })}</tbody>
+          </table></div>}
+          <p>تراز تا پایان بازه: <Balance v={bal} /></p>
+        </>
+      };
+    }
+    if (view === 'debt') {
+      const list = report(data, toP).filter(x => Math.round(x.balance) < 0).sort((a, b) => a.balance - b.balance);
+      const phone = id => (data.units.find(u => u.id === id) || {}).phone || '';
+      return {
+        rows: list.map(x => ({ 'واحد': x.number, 'ساکن': x.resident, 'تلفن': phone(x.id), 'بدهی (ریال)': Math.round(-x.balance) })),
+        jsx: <>
+          <b>بدهکاران تا پایان {monthLabel(toP)}</b>
+          {list.length === 0 ? <p className="muted">واحد بدهکاری وجود ندارد.</p> : <div className="scroll"><table>
+            <thead><tr><th>واحد</th><th>ساکن</th><th>تلفن</th><th>بدهی (ریال)</th></tr></thead>
+            <tbody>{list.map(x => <tr key={x.id}><td>{x.number}</td><td>{x.resident}</td><td dir="ltr" style={{ textAlign: 'right' }}>{phone(x.id)}</td><td className="neg">{fa(-x.balance)}</td></tr>)}</tbody>
+            <tfoot><tr><td>جمع</td><td></td><td></td><td className="neg">{fa(-list.reduce((t, x) => t + x.balance, 0))}</td></tr></tfoot>
+          </table></div>}
+        </>
+      };
+    }
+    // fund ledger
+    const opening = (data.settings.fundInitial || 0) + items.filter(x => itemKey(x) < fromK).reduce((t, x) => t + net(x), 0);
+    let bal = opening;
+    const rows = sel.slice().sort((a, b) => itemKey(a).localeCompare(itemKey(b))).map(x => ({ ...x, balance: (bal += net(x)) }));
+    return {
+      rows: rows.map(x => ({ 'تاریخ': dateStr(x.period, x.day), 'شرح': x.label, 'دسته': x.cat, 'درآمد': x.inc, 'هزینه': x.out, 'کارمزد': x.fee, 'موجودی': Math.round(x.balance) })),
+      jsx: <>
+        <b>گردش صندوق</b>
+        <p className="muted">موجودی ابتدای بازه: {fa(opening)} ریال | درآمد: {fa(rows.reduce((t, x) => t + x.inc, 0))} | هزینه و کارمزد: {fa(rows.reduce((t, x) => t + x.out + x.fee, 0))} | موجودی پایان بازه: {fa(bal)} ریال</p>
+        <div className="scroll"><table>
+          <thead><tr><th>تاریخ</th><th>شرح</th><th>دسته</th><th>درآمد</th><th>هزینه</th><th>کارمزد</th><th>موجودی</th></tr></thead>
+          <tbody>{rows.map(x => <tr key={x.src + x.id}><td>{dateStr(x.period, x.day)}</td><td>{x.label}</td><td>{x.cat}</td><td>{fa(x.inc)}</td><td>{fa(x.out)}</td><td>{fa(x.fee)}</td><td>{fa(x.balance)}</td></tr>)}</tbody>
+        </table></div>
+      </>
+    };
+  };
+  const out = build();
+  const exportX = () => {
+    if (!out.rows.length) return alert('داده‌ای برای خروجی نیست.');
+    const wb = XLSX.utils.book_new();
+    wb.Workbook = { Views: [{ RTL: true }] };
+    XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(out.rows), 'Report');
+    XLSX.writeFile(wb, `sara-${view}.xlsx`);
+  };
+
+  return <div>
+    <div className="noprint">
+      <div className="tabs">{[['cat', 'جمع دسته‌ها'], ['trend', 'روند ماهانه'], ['unit', 'کارت‌ریز واحد'], ['debt', 'بدهکاران'], ['fund', 'گردش صندوق']].map(([k, t]) =>
+        <button key={k} className={'tab' + (view === k ? ' on' : '')} onClick={() => { setView(k); setSrc('expense'); setCat('all'); }}>{t}</button>)}</div>
+      <div className="card">
+        <div className="form" style={{ alignItems: 'center' }}><span>از</span>{dateIn('f')}<span>تا</span>{dateIn('t')}</div>
+        <div className="form">
+          <button className="btn ghost" onClick={() => preset('month')}>این ماه</button>
+          <button className="btn ghost" onClick={() => preset('quarter')}>این فصل</button>
+          <button className="btn ghost" onClick={() => preset('year')}>امسال</button>
+        </div>
+        {(view === 'cat' || view === 'trend') && <div className="form" style={{ marginBottom: 0 }}>
+          <select value={src} onChange={e => { setSrc(e.target.value); setCat('all'); }} aria-label="نوع">
+            {Object.entries(SRC).map(([k, t]) => <option key={k} value={k}>{t}</option>)}
+            {view === 'trend' && <option value="flow">درآمد و هزینه‌ی صندوق</option>}
+            {view === 'trend' && <option value="balance">موجودی پایان ماه صندوق</option>}
+          </select>
+          {view === 'trend' && !['balance', 'flow'].includes(src) && <select value={cat} onChange={e => setCat(e.target.value)} aria-label="دسته">
+            <option value="all">همه‌ی دسته‌ها</option>
+            {data.settings.categories[catKind].map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+            <option value="">بدون دسته</option>
+          </select>}
+        </div>}
+        {view === 'unit' && <div className="form" style={{ marginBottom: 0 }}>
+          <select value={unitId} onChange={e => setUnitId(e.target.value)} aria-label="واحد">
+            <option value="">انتخاب واحد</option>
+            {data.units.map(u => <option key={u.id} value={u.id}>{u.number}{u.resident ? ' - ' + u.resident : ''}</option>)}
+          </select>
+        </div>}
+      </div>
+    </div>
+    {bad && <p className="neg">تاریخ شروع بعد از تاریخ پایان است.</p>}
+    <p className="muted">بازه: {dateStr(fromP, r.fd)} تا {dateStr(toP, r.td)}. مبالغ به ریال.</p>
+    <div className="card">{out.jsx}</div>
+    <div className="bar">
+      <button className="btn" onClick={exportX}>خروجی Excel</button>
+      <button className="btn ghost" onClick={() => window.print()}>چاپ / PDF</button>
+    </div>
+  </div>;
 }
 
 function App() {
@@ -93,67 +512,159 @@ function App() {
   const [y, setY] = useState(cur.y);
   const [m, setM] = useState(cur.m);
   const period = mk(y, m);
+  const BK = 'sara-last-backup';
+  const [lb, setLb] = useState(() => { try { return JSON.parse(localStorage.getItem(BK)); } catch (e) { return null; } });
+  const needBackup = !lb || Date.now() - lb.t > 7 * 864e5 || data.settlements.length > lb.s;
+
+  useEffect(() => {
+    try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch (e) { /* ignore */ }
+  }, []);
 
   useEffect(() => {
     try { localStorage.setItem(KEY, JSON.stringify(data)); } catch (e) { console.error(e); }
   }, [data]);
 
+  const [day, setDay] = useState(cur.d);
   const set = (key, fn) => setData(d => ({ ...d, [key]: fn(d[key]) }));
   const rows = report(data, period);
   const totalExp = data.expenses.filter(e => e.period === period).reduce((s, e) => s + e.amount, 0);
   const totalPaid = rows.reduce((s, r) => s + r.paid, 0);
+  const totalCharge = rows.reduce((s, r) => s + r.charge, 0);
   const totalBal = rows.reduce((s, r) => s + r.balance, 0);
+  const locked = isSettled(data, period);
+  const q = Math.ceil(m / 3);
+  const settled = data.settlements.find(st => st.year === y && st.q === q);
+  const calc = settled || computeSettlement(data, y, q);
 
-  // Unit actions
-  const [uf, setUf] = useState({ name: '', owner: '', coef: '1' });
-  const addUnit = () => {
-    if (!uf.name.trim()) return alert('نام یا شماره واحد را وارد کن.');
-    set('units', l => [...l, { id: uid(), name: uf.name.trim(), owner: uf.owner.trim(), coef: Number(uf.coef) || 0 }]);
-    setUf({ name: '', owner: '', coef: '1' });
+  // Unit actions (fields: number, resident/owner name, coefficient)
+  const [uf, setUf] = useState({ number: '', resident: '', coef: '1' });
+  const [editId, setEditId] = useState(null);
+  const nextNumber = () => String(Math.max(0, ...data.units.map(u => parseInt(u.number, 10) || 0)) + 1);
+  const resetUnitForm = () => { setUf({ number: '', resident: '', coef: '1' }); setEditId(null); };
+  const saveUnit = () => {
+    const number = String(uf.number).trim() || nextNumber();
+    if (data.units.some(u => u.number === number && u.id !== editId)) return alert('این شماره واحد قبلاً ثبت شده.');
+    const coef = Number(uf.coef);
+    if (!(coef > 0)) return alert('ضریب معتبر وارد کن.');
+    const base = editId ? data.units.find(u => u.id === editId) : { ...EMPTY_UNIT, id: uid() };
+    const unit = { ...base, number, resident: uf.resident.trim(), coef };
+    set('units', l => editId ? l.map(u => u.id === editId ? unit : u) : [...l, unit]);
+    resetUnitForm();
   };
-  const editUnit = (id, k, v) => set('units', l => l.map(u => u.id === id ? { ...u, [k]: v } : u));
+  const startEdit = u => { setUf({ number: u.number, resident: u.resident, coef: String(u.coef) }); setEditId(u.id); window.scrollTo({ top: 0, behavior: 'smooth' }); };
   const delUnit = id => {
     if (!confirm('این واحد و پرداخت‌هایش حذف شود؟')) return;
     set('units', l => l.filter(u => u.id !== id));
     set('payments', l => l.filter(p => p.unitId !== id));
+    if (editId === id) resetUnitForm();
   };
 
-  // Expense actions
-  const [ef, setEf] = useState({ title: '', amount: '' });
+  // Settings actions (advance amount per effective month)
+  const [sf, setSf] = useState({ y: cur.y, m: 1, amount: '' });
+  const [fi, setFi] = useState(String(data.settings.fundInitial || ''));
+  const addAdvance = () => {
+    const amount = Number(sf.amount);
+    if (!(amount > 0)) return alert('مبلغ معتبر (به ریال) وارد کن.');
+    const from = mk(sf.y, sf.m);
+    set('settings', st => ({ ...st, advances: [...st.advances.filter(a => a.from !== from), { id: uid(), from, amount }] }));
+    setSf(f => ({ ...f, amount: '' }));
+  };
+  const delAdvance = id => set('settings', st => ({ ...st, advances: st.advances.filter(a => a.id !== id) }));
+
+  // Expense / payment / fund actions (date = selected month + day)
+  const [ef, setEf] = useState({ title: '', amount: '', fee: '', kind: 'coef', category: '' });
+  const [pf, setPf] = useState({ unitId: '', amount: '', category: '' });
+  const [ff, setFf] = useState({ amount: '', note: '', category: '' });
+  const lockedAlert = () => alert('این فصل تسویه شده؛ برای تغییر، اول تسویه را باز کن.');
+  const dayOk = () => { const d = Number(day); if (!(d >= 1 && d <= 31)) { alert('روز را بین ۱ تا ۳۱ وارد کن.'); return null; } return d; };
   const addExpense = () => {
-    const amount = Number(ef.amount);
-    if (!ef.title.trim() || !(amount > 0)) return alert('عنوان و مبلغ معتبر وارد کن.');
-    set('expenses', l => [...l, { id: uid(), period, title: ef.title.trim(), amount }]);
-    setEf({ title: '', amount: '' });
+    if (locked) return lockedAlert();
+    const amount = Number(ef.amount), d = dayOk();
+    if (!d) return;
+    if (!ef.category || !(amount > 0)) return alert('عنوان هزینه و مبلغ معتبر را مشخص کن.');
+    set('expenses', l => [...l, { id: uid(), period, day: d, title: ef.title.trim(), amount, fee: Number(ef.fee) || 0, kind: ef.kind, category: ef.category }]);
+    setEf({ ...ef, title: '', amount: '', fee: '' });
   };
-
-  // Payment actions
-  const [pf, setPf] = useState({ unitId: '', amount: '' });
   const addPayment = () => {
-    const amount = Number(pf.amount);
-    if (!pf.unitId || !(amount > 0)) return alert('واحد و مبلغ معتبر انتخاب کن.');
-    set('payments', l => [...l, { id: uid(), period, unitId: pf.unitId, amount }]);
-    setPf({ unitId: pf.unitId, amount: '' });
+    if (locked) return lockedAlert();
+    const amount = Number(pf.amount), d = dayOk();
+    if (!d) return;
+    if (!pf.unitId || !pf.category || !(amount > 0)) return alert('واحد، نوع پرداخت و مبلغ معتبر را مشخص کن.');
+    set('payments', l => [...l, { id: uid(), period, day: d, unitId: pf.unitId, amount, category: pf.category }]);
+    setPf({ ...pf, amount: '' });
+  };
+  const addDeposit = () => {
+    const amount = Number(ff.amount), d = dayOk();
+    if (!d) return;
+    if (!(amount > 0)) return alert('مبلغ معتبر (به ریال) وارد کن.');
+    set('fundDeposits', l => [...l, { id: uid(), period, day: d, amount, note: ff.note.trim(), category: ff.category }]);
+    setFf({ ...ff, amount: '', note: '' });
+  };
+  const delExpense = id => { if (locked) return lockedAlert(); set('expenses', l => l.filter(x => x.id !== id)); };
+  const delPayment = id => { if (locked) return lockedAlert(); set('payments', l => l.filter(x => x.id !== id)); };
+  const delDeposit = id => set('fundDeposits', l => l.filter(x => x.id !== id));
+  const led = ledger(data, period);
+
+  // Settlement actions
+  const settle = () => {
+    if (calc.coefTotal > 0 && !calc.sumCoef) return alert('جمع ضرایب واحدهای فعال صفر است.');
+    if (calc.equalTotal > 0 && !calc.activeCount) return alert('واحد فعالی برای تقسیم هزینه‌ی مساوی وجود ندارد.');
+    if (data.settlements.some(st => qIndex(st) > y * 4 + q)) return alert('تسویه‌ی فصل‌های بعدی ثبت شده؛ فصل‌ها را به ترتیب تسویه کن.');
+    if (!confirm('تسویه ثبت و این فصل قفل شود؟ اختلاف هر واحد به فصل بعد منتقل می‌شود.')) return;
+    set('settlements', l => [...l, { id: uid(), year: y, q, coefTotal: calc.coefTotal, equalTotal: calc.equalTotal, specialTotal: calc.specialTotal, rows: calc.rows }]);
+  };
+  const unsettle = () => {
+    if (data.settlements.some(st => qIndex(st) > y * 4 + q)) return alert('اول تسویه‌ی فصل‌های بعدی را باز کن.');
+    if (!confirm('تسویه این فصل باز شود؟')) return;
+    set('settlements', l => l.filter(st => !(st.year === y && st.q === q)));
+  };
+  const exportSettlement = () => {
+    const sheet = calc.rows.map(r => {
+      const d = Math.round(r.diff);
+      return { 'واحد': r.number, 'ساکن': r.resident, 'سهم فصل (ریال)': Math.round(r.share), 'مانده‌ی قبل (ریال)': Math.round(r.carry), 'پرداختی فصل (ریال)': Math.round(r.paid), 'اختلاف (ریال)': Math.abs(d), 'وضعیت': d < 0 ? 'بدهکار' : d > 0 ? 'بستانکار' : 'تسویه' };
+    });
+    const months = quarterMonths(y, q);
+    const exp = data.expenses.filter(e => months.includes(e.period)).map(e => ({ 'ماه': MONTHS[Number(e.period.split('-')[1]) - 1], 'عنوان': e.title, 'نوع': KINDS[e.kind || 'coef'], 'مبلغ (ریال)': e.amount }));
+    const wb = XLSX.utils.book_new();
+    wb.Workbook = { Views: [{ RTL: true }] };
+    XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(sheet), 'Settlement');
+    XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(exp), 'Expenses');
+    XLSX.writeFile(wb, `settlement-${y}-Q${q}.xlsx`);
   };
 
   // Export / backup
   const exportXlsx = () => {
     const sheet = rows.map(r => ({
-      'واحد': r.name, 'مالک/ساکن': r.owner, 'ضریب': r.coef,
-      'شارژ ماه': Math.round(r.charge), 'پرداختی ماه': Math.round(r.paid), 'تراز تجمعی': Math.round(r.balance)
+      'واحد': r.number, 'ساکن': r.resident, 'ضریب': r.coef,
+      'شارژ ماه (ریال)': Math.round(r.charge), 'پرداختی ماه (ریال)': Math.round(r.paid), 'تراز تجمعی (ریال)': Math.round(r.balance)
     }));
-    const exp = data.expenses.filter(e => e.period === period).map(e => ({ 'عنوان': e.title, 'مبلغ': e.amount }));
+    const exp = data.expenses.filter(e => e.period === period).map(e => ({ 'عنوان': e.title, 'نوع': KINDS[e.kind || 'coef'], 'مبلغ (ریال)': e.amount }));
     const wb = XLSX.utils.book_new();
     wb.Workbook = { Views: [{ RTL: true }] };
     XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(sheet), 'Report');
     XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(exp), 'Expenses');
     XLSX.writeFile(wb, `report-${period}.xlsx`);
   };
+  const backupFile = () => new File([JSON.stringify(data)], `sara-backup-${new Date().toISOString().slice(0, 10)}.json`, { type: 'application/json' });
+  const markBackup = () => {
+    const v = { t: Date.now(), s: data.settlements.length };
+    try { localStorage.setItem(BK, JSON.stringify(v)); } catch (e) { console.error(e); }
+    setLb(v);
+  };
   const exportJson = () => {
+    const f = backupFile();
     const a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob([JSON.stringify(data)], { type: 'application/json' }));
-    a.download = 'building-backup.json';
+    a.href = URL.createObjectURL(f);
+    a.download = f.name;
     a.click();
+    markBackup();
+  };
+  // Share sheet on mobile (Telegram, Drive, ...); falls back to a normal download
+  const shareJson = async () => {
+    const f = backupFile();
+    if (navigator.canShare && navigator.canShare({ files: [f] })) {
+      try { await navigator.share({ files: [f], title: 'Sara backup' }); markBackup(); } catch (e) { /* cancelled */ }
+    } else exportJson();
   };
   const importJson = e => {
     const f = e.target.files[0];
@@ -163,108 +674,225 @@ function App() {
       try {
         const d = JSON.parse(r.result);
         if (!Array.isArray(d.units) || !Array.isArray(d.expenses) || !Array.isArray(d.payments)) throw new Error();
-        setData(d);
+        setData(normalize(d));
       } catch (err) { alert('فایل پشتیبان معتبر نیست.'); }
     };
     r.readAsText(f);
     e.target.value = '';
   };
 
-  const unitName = id => (data.units.find(u => u.id === id) || {}).name || '—';
+  const unitName = id => (data.units.find(u => u.id === id) || {}).number || '—';
   const monthExpenses = data.expenses.filter(e => e.period === period);
   const monthPayments = data.payments.filter(p => p.period === period);
 
   return (
     <div className="wrap">
-      <h1>مدیریت ساختمان</h1>
+      <h1>سرا</h1>
+      {data.units.length > 0 && needBackup && <div className="banner" role="alert">
+        <span>{lb ? 'مدت زیادی از آخرین Backup گذشته یا تسویه‌ی جدیدی ثبت شده.' : 'هنوز Backup نگرفته‌ای.'} داده‌ها فقط روی همین دستگاه‌اند.</span>
+        <button className="btn" onClick={shareJson}>گرفتن Backup</button>
+      </div>}
       <div className="bar">
         <select value={m} onChange={e => setM(Number(e.target.value))} aria-label="ماه">
           {MONTHS.map((n, i) => <option key={n} value={i + 1}>{n}</option>)}
         </select>
-        <input type="number" value={y} onChange={e => setY(Number(e.target.value))} style={{ width: 90 }} aria-label="سال" />
+        <NumIn group={false} value={y} onChange={v => setY(Number(v) || 0)} style={{ width: 90 }} aria-label="سال" />
       </div>
-      <div className="tabs" role="tablist">
-        {[['report', 'گزارش ماهانه'], ['units', 'واحدها'], ['expenses', 'هزینه‌ها'], ['payments', 'پرداخت‌ها']].map(([k, t]) =>
-          <button key={k} role="tab" className={'tab' + (tab === k ? ' on' : '')} onClick={() => setTab(k)}>{t}</button>)}
-      </div>
+      <nav className="nav" aria-label="بخش‌ها">
+        {[['report', 'وضعیت ماهانه', 'dash'], ['units', 'واحدها', 'building'], ['expenses', 'هزینه‌ها', 'receipt'], ['payments', 'پرداخت‌ها', 'wallet'], ['fund', 'صندوق', 'coins'], ['reports', 'گزارش‌ها', 'chart'], ['settle', 'تسویه فصلی', 'scale'], ['settings', 'تنظیمات', 'gear']].map(([k, t, ic]) =>
+          <button key={k} className={tab === k ? 'on' : ''} onClick={() => setTab(k)}><Ico n={ic} /><span>{t}</span></button>)}
+      </nav>
 
       {tab === 'report' && <>
         <div className="sum">
-          <div><span className="muted">هزینه کل ماه</span><b>{fa(totalExp)}</b></div>
-          <div><span className="muted">دریافتی ماه</span><b>{fa(totalPaid)}</b></div>
+          <div><span className="muted">جمع شارژ ماه (ریال)</span><b>{fa(totalCharge)}</b></div>
+          <div><span className="muted">دریافتی ماه (ریال)</span><b>{fa(totalPaid)}</b></div>
+          <div><span className="muted">کل هزینه‌های ماه (ریال)</span><b>{fa(totalExp)}</b></div>
           <div><span className="muted">تراز کل ساختمان</span><b><Balance v={totalBal} /></b></div>
         </div>
         <div className="card scroll">
           {rows.length === 0 ? <p className="muted">اول از تب «واحدها» واحد اضافه کن.</p> :
             <table>
-              <thead><tr><th>واحد</th><th>مالک/ساکن</th><th>ضریب</th><th>شارژ ماه</th><th>پرداختی ماه</th><th>تراز تجمعی</th></tr></thead>
+              <thead><tr><th>واحد</th><th>ساکن</th><th>ضریب</th><th>شارژ ماه</th><th>پرداختی ماه</th><th>تراز تجمعی</th></tr></thead>
               <tbody>{rows.map(r => <tr key={r.id}>
-                <td>{r.name}</td><td>{r.owner}</td><td>{fa(r.coef)}</td><td>{fa(r.charge)}</td><td>{fa(r.paid)}</td><td><Balance v={r.balance} /></td>
+                <td>{r.number}</td><td>{r.resident}{!r.active && <span className="off"> (غیرفعال)</span>}</td><td>{faNum(r.coef)}</td><td>{fa(r.charge)}</td><td>{fa(r.paid)}</td><td><Balance v={r.balance} /></td>
               </tr>)}</tbody>
             </table>}
         </div>
+        {data.settings.advances.length === 0 && <p className="neg">مبلغ علی‌الحساب تعریف نشده؛ از تب «تنظیمات» اضافه‌اش کن.</p>}
+        {locked && <p className="muted">این ماه در فصل تسویه‌شده است؛ تراز واحدها همان اختلاف تسویه‌ی فصل است (جزئیات در تب «تسویه فصلی»).</p>}
+        <p className="muted">همه‌ی مبالغ به ریال است. شارژ و تراز ماهانه بر اساس علی‌الحساب است و اختلاف با هزینه‌ی واقعی در تسویه‌ی فصلی مشخص می‌شود.</p>
         <div className="bar">
           <button className="btn" onClick={exportXlsx} disabled={!rows.length}>خروجی Excel</button>
           <button className="btn ghost" onClick={exportJson}>دانلود Backup</button>
+          <button className="btn ghost" onClick={shareJson}>اشتراک‌گذاری Backup</button>
           <label className="btn ghost">بازیابی Backup<input type="file" accept=".json" onChange={importJson} hidden /></label>
         </div>
         <p className="muted">داده‌ها فقط در مرورگر همین دستگاه ذخیره می‌شن؛ پاک کردن اطلاعات مرورگر یعنی از دست رفتن داده. Backup بگیر.</p>
       </>}
 
-      {tab === 'units' && <div className="card">
-        <div className="form">
-          <input placeholder="نام / شماره واحد" value={uf.name} onChange={e => setUf({ ...uf, name: e.target.value })} />
-          <input placeholder="مالک / ساکن" value={uf.owner} onChange={e => setUf({ ...uf, owner: e.target.value })} />
-          <input type="number" step="any" placeholder="ضریب" value={uf.coef} onChange={e => setUf({ ...uf, coef: e.target.value })} />
-          <button className="btn" onClick={addUnit}>افزودن واحد</button>
+      {tab === 'reports' && <Reports data={data} cur={cur} />}
+
+      {tab === 'units' && <>
+        <div className="card">
+          <b>{editId ? 'ویرایش واحد' : 'افزودن واحد'}</b>
+          <div className="form" style={{ marginTop: 10 }}>
+            <NumIn group={false} value={uf.number} onChange={v => setUf({ ...uf, number: v })} placeholder={'شماره واحد (خودکار: ' + faDigits(nextNumber()) + ')'} />
+            <input placeholder="نام مالک / ساکن" value={uf.resident} onChange={e => setUf({ ...uf, resident: e.target.value })} />
+            <NumIn decimal group={false} value={uf.coef} onChange={v => setUf({ ...uf, coef: v })} placeholder="ضریب" />
+            <button className="btn" onClick={saveUnit}>{editId ? 'ذخیره' : 'افزودن'}</button>
+            {editId && <button className="btn ghost" onClick={resetUnitForm}>انصراف</button>}
+          </div>
         </div>
-        <div className="scroll"><table>
-          <thead><tr><th>واحد</th><th>مالک/ساکن</th><th>ضریب</th><th></th></tr></thead>
-          <tbody>{data.units.map(u => <tr key={u.id}>
-            <td><input value={u.name} onChange={e => editUnit(u.id, 'name', e.target.value)} /></td>
-            <td><input value={u.owner} onChange={e => editUnit(u.id, 'owner', e.target.value)} /></td>
-            <td><input type="number" step="any" value={u.coef} onChange={e => editUnit(u.id, 'coef', e.target.value)} /></td>
-            <td><button className="btn del" onClick={() => delUnit(u.id)}>حذف</button></td>
-          </tr>)}</tbody>
-        </table></div>
-        <p className="muted">تغییر ضریب یا افزودن واحد، گزارش ماه‌های قبل را هم دوباره محاسبه می‌کند.</p>
-      </div>}
+        <div className="card scroll">
+          <table>
+            <thead><tr><th>شماره واحد</th><th>مالک / ساکن</th><th>ضریب</th><th></th></tr></thead>
+            <tbody>{data.units.map(u => <tr key={u.id}>
+              <td>{faDigits(u.number)}</td><td>{u.resident}</td><td>{faNum(u.coef)}</td>
+              <td>
+                <button className="btn ghost" aria-label="ویرایش" title="ویرایش" style={{ padding: '4px 8px', marginInlineEnd: 6 }} onClick={() => startEdit(u)}><Ico n="edit" /></button>
+                <button className="btn del" aria-label="حذف" title="حذف" onClick={() => delUnit(u.id)}><Ico n="trash" /></button>
+              </td>
+            </tr>)}</tbody>
+          </table>
+          {data.units.length === 0 && <p className="muted">هنوز واحدی ثبت نشده.</p>}
+        </div>
+        <p className="muted">تغییر ضریب، گزارش ماه‌های قبل را هم دوباره محاسبه می‌کند.</p>
+      </>}
 
       {tab === 'expenses' && <div className="card">
-        <p className="muted">هزینه‌های {MONTHS[m - 1]} {fa(y)}</p>
+        <p className="muted">هزینه‌های {MONTHS[m - 1]} {faDigits(y)}</p>
+        {locked && <p className="neg">این فصل تسویه شده و قابل تغییر نیست.</p>}
         <div className="form">
-          <input placeholder="عنوان (مثلاً نظافت)" value={ef.title} onChange={e => setEf({ ...ef, title: e.target.value })} />
-          <input type="number" placeholder="مبلغ" value={ef.amount} onChange={e => setEf({ ...ef, amount: e.target.value })} />
+          <NumIn group={false} value={day} onChange={setDay} placeholder="روز" style={{ flex: '0 1 70px' }} aria-label="روز" />
+          <CatSelect data={data} kind="expense" value={ef.category} placeholder="عنوان هزینه" onChange={v => setEf({ ...ef, category: v })} />
+          <NumIn placeholder="مبلغ (ریال)" value={ef.amount} onChange={v => setEf({ ...ef, amount: v })} />
+          <NumIn placeholder="کارمزد (ریال)" value={ef.fee} onChange={v => setEf({ ...ef, fee: v })} />
+          <select value={ef.kind} onChange={e => setEf({ ...ef, kind: e.target.value })} aria-label="نوع محاسبه">
+            {Object.entries(KINDS).map(([k, t]) => <option key={k} value={k}>{t}</option>)}
+          </select>
+          <input placeholder="توضیحات (اختیاری)" value={ef.title} onChange={e => setEf({ ...ef, title: e.target.value })} />
           <button className="btn" onClick={addExpense}>ثبت هزینه</button>
         </div>
         <div className="scroll"><table>
-          <thead><tr><th>عنوان</th><th>مبلغ</th><th></th></tr></thead>
-          <tbody>{monthExpenses.map(e => <tr key={e.id}><td>{e.title}</td><td>{fa(e.amount)}</td>
-            <td><button className="btn del" onClick={() => set('expenses', l => l.filter(x => x.id !== e.id))}>حذف</button></td></tr>)}</tbody>
-          <tfoot><tr><td>جمع</td><td>{fa(totalExp)}</td><td></td></tr></tfoot>
+          <thead><tr><th>تاریخ</th><th>عنوان</th><th>توضیحات</th><th>نوع</th><th>مبلغ (ریال)</th><th>کارمزد</th><th></th></tr></thead>
+          <tbody>{monthExpenses.map(e => <tr key={e.id}><td>{dateStr(e.period, e.day)}</td><td>{catName(data, 'expense', e.category)}</td><td>{e.title}</td><td>{KINDS[e.kind || 'coef']}</td><td>{fa(e.amount)}</td><td>{fa(e.fee || 0)}</td>
+            <td><button className="btn del" aria-label="حذف" title="حذف" onClick={() => delExpense(e.id)}><Ico n="trash" /></button></td></tr>)}</tbody>
+          <tfoot><tr><td>جمع</td><td></td><td></td><td></td><td>{fa(totalExp)}</td><td>{fa(monthExpenses.reduce((s, e) => s + (e.fee || 0), 0))}</td><td></td></tr></tfoot>
         </table></div>
+        <p className="muted">کارمزد فقط از موجودی صندوق کم می‌شود و سهم واحدها را تغییر نمی‌دهد.</p>
       </div>}
 
       {tab === 'payments' && <div className="card">
-        <p className="muted">پرداخت‌های {MONTHS[m - 1]} {fa(y)}</p>
+        <p className="muted">پرداخت‌های {MONTHS[m - 1]} {faDigits(y)}</p>
+        {locked && <p className="neg">این فصل تسویه شده و قابل تغییر نیست.</p>}
         <div className="form">
+          <NumIn group={false} value={day} onChange={setDay} placeholder="روز" style={{ flex: '0 1 70px' }} aria-label="روز" />
           <select value={pf.unitId} onChange={e => setPf({ ...pf, unitId: e.target.value })}>
             <option value="">انتخاب واحد</option>
-            {data.units.map(u => <option key={u.id} value={u.id}>{u.name}</option>)}
+            {data.units.filter(u => u.active).map(u => <option key={u.id} value={u.id}>{u.number}{u.resident ? ' - ' + u.resident : ''}</option>)}
           </select>
-          <input type="number" placeholder="مبلغ" value={pf.amount} onChange={e => setPf({ ...pf, amount: e.target.value })} />
+          <NumIn placeholder="مبلغ (ریال)" value={pf.amount} onChange={v => setPf({ ...pf, amount: v })} />
+          <CatSelect data={data} kind="payment" value={pf.category} placeholder="نوع پرداخت" onChange={v => setPf({ ...pf, category: v })} />
           <button className="btn" onClick={addPayment}>ثبت پرداخت</button>
         </div>
         <div className="scroll"><table>
-          <thead><tr><th>واحد</th><th>مبلغ</th><th></th></tr></thead>
-          <tbody>{monthPayments.map(p => <tr key={p.id}><td>{unitName(p.unitId)}</td><td>{fa(p.amount)}</td>
-            <td><button className="btn del" onClick={() => set('payments', l => l.filter(x => x.id !== p.id))}>حذف</button></td></tr>)}</tbody>
+          <thead><tr><th>تاریخ</th><th>واحد</th><th>نوع پرداخت</th><th>مبلغ (ریال)</th><th></th></tr></thead>
+          <tbody>{monthPayments.map(p => <tr key={p.id}><td>{dateStr(p.period, p.day)}</td><td>{unitName(p.unitId)}</td><td>{catName(data, 'payment', p.category)}</td><td>{fa(p.amount)}</td>
+            <td><button className="btn del" aria-label="حذف" title="حذف" onClick={() => delPayment(p.id)}><Ico n="trash" /></button></td></tr>)}</tbody>
         </table></div>
       </div>}
+
+      {tab === 'fund' && <>
+        <div className="sum">
+          <div><span className="muted">موجودی فعلی صندوق (ریال)</span><b>{fa(led.total)}</b></div>
+          <div><span className="muted">موجودی ابتدای ماه (ریال)</span><b>{fa(led.opening)}</b></div>
+          <div><span className="muted">درآمد ماه (ریال)</span><b>{fa(led.rows.reduce((s, r) => s + r.inc, 0))}</b></div>
+          <div><span className="muted">هزینه و کارمزد ماه (ریال)</span><b>{fa(led.rows.reduce((s, r) => s + r.out + r.fee, 0))}</b></div>
+        </div>
+        <div className="card">
+          <b>ثبت واریزی به صندوق</b>
+          <div className="form" style={{ marginTop: 10 }}>
+            <NumIn group={false} value={day} onChange={setDay} placeholder="روز" style={{ flex: '0 1 70px' }} aria-label="روز" />
+            <NumIn placeholder="مبلغ (ریال)" value={ff.amount} onChange={v => setFf({ ...ff, amount: v })} />
+            <CatSelect data={data} kind="fund" value={ff.category} onChange={v => setFf({ ...ff, category: v })} />
+            <input placeholder="توضیحات" value={ff.note} onChange={e => setFf({ ...ff, note: e.target.value })} />
+            <button className="btn" onClick={addDeposit}>ثبت واریزی</button>
+          </div>
+          <p className="muted">گردش صندوق {MONTHS[m - 1]} {faDigits(y)}: پرداخت‌های واحدها، واریزی‌ها و هزینه‌ها.</p>
+          <div className="scroll"><table>
+            <thead><tr><th>تاریخ</th><th>شرح</th><th>دسته</th><th>درآمد</th><th>هزینه</th><th>کارمزد</th><th>موجودی</th><th></th></tr></thead>
+            <tbody>{led.rows.map(r => <tr key={r.src + r.id}><td>{dateStr(r.period, r.day)}</td><td>{r.label}</td><td>{r.cat}</td><td>{fa(r.inc)}</td><td>{fa(r.out)}</td><td>{fa(r.fee)}</td><td>{fa(r.balance)}</td>
+              <td>{r.src === 'deposit' && <button className="btn del" aria-label="حذف" title="حذف" onClick={() => delDeposit(r.id)}><Ico n="trash" /></button>}</td></tr>)}</tbody>
+          </table></div>
+        </div>
+      </>}
+
+      {tab === 'settle' && <div className="card">
+        <b>تسویه فصل {faDigits(q)} سال {faDigits(y)} ({MONTHS[3 * q - 3]} تا {MONTHS[3 * q - 1]})</b>
+        <p className="muted">فصل از ماه و سال انتخاب‌شده بالای صفحه تعیین می‌شود. اختلاف = مانده‌ی فصل قبل + پرداختی فصل − سهم واقعی. بدهکار پرداختش را تو فصل بعد ثبت می‌کند و بستانکاری می‌ماند. «مطالبه‌ی جدا» وارد تسویه نمی‌شود.</p>
+        {settled && <p className="pos">این فصل تسویه شده و قفل است (اعداد زیر ثبت‌شده‌ی زمان تسویه‌اند).</p>}
+        <div className="sum" style={{ marginTop: 10 }}>
+          <div><span className="muted">هزینه‌ها بر اساس ضریب (ریال)</span><b>{fa(calc.coefTotal)}</b></div>
+          <div><span className="muted">هزینه‌های مساوی (ریال)</span><b>{fa(calc.equalTotal)}</b></div>
+          <div><span className="muted">مطالبه‌ی جدا (ریال)</span><b>{fa(calc.specialTotal)}</b></div>
+        </div>
+        <div className="scroll">
+          {calc.rows.length === 0 ? <p className="muted">اول واحد اضافه کن.</p> :
+            <table>
+              <thead><tr><th>واحد</th><th>ساکن</th><th>مانده‌ی قبل</th><th>سهم فصل</th><th>پرداختی فصل</th><th>اختلاف</th></tr></thead>
+              <tbody>{calc.rows.map(r => <tr key={r.unitId}>
+                <td>{r.number}</td><td>{r.resident}{!r.active && <span className="off"> (غیرفعال)</span>}</td><td><Balance v={r.carry} /></td><td>{fa(r.share)}</td><td>{fa(r.paid)}</td><td><Balance v={r.diff} /></td>
+              </tr>)}</tbody>
+            </table>}
+        </div>
+        <div className="bar" style={{ marginTop: 12 }}>
+          {settled
+            ? <button className="btn ghost" onClick={unsettle}>باز کردن تسویه</button>
+            : <button className="btn" onClick={settle} disabled={!calc.rows.length}>ثبت تسویه</button>}
+          <button className="btn ghost" onClick={exportSettlement} disabled={!calc.rows.length}>خروجی Excel</button>
+        </div>
+      </div>}
+
+      {tab === 'settings' && <>
+        <div className="card">
+          <b>مبلغ علی‌الحساب ماهانه</b>
+          <p className="muted">مبلغ برای واحد با ضریب ۱ است (واحد با ضریب ۱.۵ یک‌ونیم برابرش را می‌دهد). از ماهی که انتخاب می‌کنی به بعد اعمال می‌شود، تا وقتی مبلغ جدیدی ثبت کنی. ثبت مبلغ برای ماهی که قبلاً مبلغ دارد، آن را جایگزین می‌کند.</p>
+          <div className="form">
+            <select value={sf.m} onChange={e => setSf({ ...sf, m: Number(e.target.value) })} aria-label="از ماه">
+              {MONTHS.map((n, i) => <option key={n} value={i + 1}>{n}</option>)}
+            </select>
+            <NumIn group={false} value={sf.y} onChange={v => setSf({ ...sf, y: Number(v) || 0 })} aria-label="سال" />
+            <NumIn placeholder="مبلغ به ازای ضریب ۱ (ریال)" value={sf.amount} onChange={v => setSf({ ...sf, amount: v })} />
+            <button className="btn" onClick={addAdvance}>ثبت مبلغ</button>
+          </div>
+          <div className="scroll"><table>
+            <thead><tr><th>از ماه</th><th>مبلغ (ریال)</th><th></th></tr></thead>
+            <tbody>{[...data.settings.advances].sort((a, b) => a.from.localeCompare(b.from)).map(a => {
+              const [ay, am] = a.from.split('-').map(Number);
+              return <tr key={a.id}><td>{MONTHS[am - 1]} {faDigits(ay)}</td><td>{fa(a.amount)}</td>
+                <td><button className="btn del" aria-label="حذف" title="حذف" onClick={() => delAdvance(a.id)}><Ico n="trash" /></button></td></tr>;
+            })}</tbody>
+          </table></div>
+        </div>
+        <div className="card">
+          <b>موجودی اولیه‌ی صندوق (ریال)</b>
+          <p className="muted">موجودی صندوق قبل از شروع ثبت در سرا. همه‌ی تراکنش‌های ثبت‌شده به آن اضافه یا از آن کم می‌شوند.</p>
+          <NumIn value={fi} onChange={setFi} placeholder="۰"
+            onBlur={() => set('settings', st => ({ ...st, fundInitial: Number(fi) || 0 }))} />
+        </div>
+        <CategoryEditor data={data} set={set} kind="expense" title="دسته‌های هزینه" />
+        <CategoryEditor data={data} set={set} kind="payment" title="دسته‌های پرداخت واحدها" />
+        <CategoryEditor data={data} set={set} kind="fund" title="دسته‌های واریزی صندوق" />
+        <p className="muted">دسته‌ای که استفاده شده حذف نمی‌شود؛ غیرفعالش کن تا تو فرم‌های جدید نیاید.</p>
+      </>}
     </div>
   );
 }
 
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(e => console.error(e)));
+}
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 </script>
 </body>

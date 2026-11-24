@@ -1,5 +1,5 @@
 // Sara service worker: network-first for app files, cache-first for CDN assets (offline support)
-const CACHE = 'sara-v1';
+const CACHE = 'sara-v2';
 const SHELL = ['./', 'index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png'];
 
 self.addEventListener('install', e => {
